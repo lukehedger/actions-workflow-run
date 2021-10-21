@@ -11,6 +11,9 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
     - uses: actions/checkout@v2.3.4
+      with:
+        # Should be conditional based on PR or manual/main trigger `github.event.workflow_run.event == pull_request
+        ref: github.event.workflow_run.head_branch
 
     - name: Dump workflow_run event payload
       env:
