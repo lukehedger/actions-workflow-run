@@ -45,4 +45,4 @@ jobs:
         SHA: ${{ github.event.workflow_run.head_sha }}
         # TODO: Should be conditional based on `yarn test` result
         STATE: "success"
-        TARGET_URL: "https://github.com/lukehedger/actions-workflow-run/runs/${{ github.run_id }}?check_suite_focus=true"
+        TARGET_URL: "https://github.com/lukehedger/actions-workflow-run/actions/runs/${{ github.run_id }}"
