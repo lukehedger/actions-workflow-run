@@ -1,0 +1,11 @@
+{
+  "name": "actions-workflow-run",
+  "version": "1.0.0",
+  "private": "true",
+  "scripts": {
+    "build": "echo \"Ran build\" && exit 0",
+    "deploy": "echo \"Ran deploy\" && exit 0",
+    "lint": "echo \"Ran lint\" && exit 0",
+    "test": "echo \"Ran test\" && exit 0"
+  }
+}

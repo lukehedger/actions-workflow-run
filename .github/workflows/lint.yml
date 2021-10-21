@@ -1,0 +1,25 @@
+name: Lint
+
+on:
+  pull_request:
+    branches:
+    - main
+  workflow_dispatch:
+
+jobs:
+  lint:
+    runs-on: ubuntu-20.04
+    steps:
+    - uses: actions/checkout@v2.3.4
+
+    - name: Setup Node
+      uses: actions/setup-node@v2.4.1
+      with:
+        cache: 'yarn'
+        node-version: '14'
+
+    - name: Install dependencies
+      run: yarn install --frozen-lockfile --no-progress --non-interactive
+
+    - name: Run lint
+      run: yarn lint
