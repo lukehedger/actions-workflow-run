@@ -8,6 +8,7 @@ const createCommitStatus = async () => {
       "POST /repos/{owner}/{repo}/statuses/{sha}",
       {
         context: process.env.CONTEXT,
+        description: process.env.DESCRIPTION,
         owner: "lukehedger",
         repo: "actions-workflow-run",
         sha: process.env.SHA,

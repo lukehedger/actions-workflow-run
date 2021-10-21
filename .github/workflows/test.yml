@@ -4,7 +4,6 @@ on:
   workflow_run:
     workflows: ["Deploy"]
     types: [completed]
-  workflow_dispatch:
 
 jobs:
   test:
@@ -40,7 +39,7 @@ jobs:
     - name: Create commit status for test workflow on pull request
       run: node .github/actions/create-commit-status
       env:
-        CONTEXT: "Test / test"
+        CONTEXT: "Test / test (workflow_run)"
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         SHA: ${{ github.event.workflow_run.head_sha }}
         # TODO: Should be conditional based on `yarn test` result
