@@ -11,6 +11,8 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
     - uses: actions/checkout@v2.3.4
+      with:
+        ref: ${{ github.event.workflow_run.head_branch }}
 
     - name: Dump workflow_run event payload
       env:
@@ -31,3 +33,16 @@ jobs:
 
     - name: Run test
       run: yarn test
+
+    - name: Install GitHub API client for GitHub Actions
+      run: npm install --prefix .github/actions/create-commit-status
+
+    - name: Create commit status for test workflow on pull request
+      run: node .github/actions/create-commit-status
+      env:
+        CONTEXT: "Test / test"
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        SHA: ${{ github.event.workflow_run.head_sha }}
+        # TODO: Should be conditional based on `yarn test` result
+        STATE: "success"
+        TARGET_URL: "https://github.com/lukehedger/actions-workflow-run/actions/runs/${{ github.run_id }}"

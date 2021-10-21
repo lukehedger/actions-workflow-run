@@ -1,0 +1,9 @@
+{
+  "name": "create-commit-status",
+  "private": true,
+  "version": "0.0.0",
+  "main": "create-commit-status.js",
+  "dependencies": {
+    "@octokit/action": "3.4.1"
+  }
+}
